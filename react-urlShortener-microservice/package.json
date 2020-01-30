@@ -1,0 +1,23 @@
+{
+  "name": "react-urlShortener-microservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "ui": "cd ui && npm start",
+    "dev": "concurrently -n 'server,ui' -c 'red,green' \"nodemon arg\" \"npm run ui\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "concurrently": "^5.1.0",
+    "config": "^3.2.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.10",
+    "morgan": "^1.9.1"
+  }
+}
