@@ -11,8 +11,8 @@ const mongoose = require('mongoose')
 //Pi40ZRUgL9da0iu3
 const connectDB = async()=>{
   try{
-    // const MONGO_URI = "mongodb+srv://chiar:Pi40ZRUgL9da0iu3@blog-wgopc.mongodb.net/test"
-    await mongoose.connect(('mongodb://localhost/exercise-track' ), {
+    const uri = process.env.MONGO_URI
+    await mongoose.connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
@@ -24,7 +24,6 @@ const connectDB = async()=>{
   }
 }
 connectDB();
-
 app.use(cors())
 
 app.use(bodyParser.urlencoded({extended: false}))
