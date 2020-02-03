@@ -2,15 +2,15 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
-
 const exerciseRouter = require('./routes/exercises')
 const usersRouter = require('./routes/users')
 require('dotenv').config();
 
 const mongoose = require('mongoose')
-//Pi40ZRUgL9da0iu3
+
 const connectDB = async()=>{
   try{
+    //25AsVEcv0ULP5tyI
     const uri = process.env.MONGO_URI
     await mongoose.connect(uri, {
       useNewUrlParser: true,
