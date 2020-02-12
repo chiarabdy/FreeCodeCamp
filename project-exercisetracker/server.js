@@ -29,14 +29,14 @@ app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-
+//Send the HTML
 app.use(express.static('public'))
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
 
-app.use('/exercises', exerciseRouter);
-app.use('/users', usersRouter);
+app.use('/api/exercises', exerciseRouter);
+app.use('/api/users', usersRouter);
 
 const listener = app.listen(process.env.PORT || 3000, () => {
   console.log('Your app is listening on port ' + listener.address().port)

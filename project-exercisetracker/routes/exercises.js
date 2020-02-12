@@ -7,20 +7,20 @@ router.get('/', (req, res)=>{
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.post('/add', (req, res)=>{
-    const userid = req.body.userid;
+router.post('/new-exercise', (req, res)=>{
+    const userId = req.body.userId;
     const description = req.body.description;
     const duration = Number(req.body.duration);
     const date = Date.parse(req.body.date)
 
     const newExercise = new Exercise({
-        userid,
+        userId,
         description,
         duration,
         date
     });
     newExercise.save()
-    .then(() =>res.json("exercise Added"))
+    .then(() =>res.json(newExercise))
     .catch(err => res.status(400).json('Error: ' + err));
     
 })
@@ -30,7 +30,7 @@ router.get('/:id', (req, res)=>{
     .then(exercise => res.json(exercise))
     .catch(err => res.status(400).json("Error: " + err))
 })
-router.delete('/:id', (req, res)=>{
+router.delete('/:id', (req, res)=>{ 
     Exercise.findByIdAndDelete(req.params.id)
     .then(()=> res.json('Exercise Deleted. '))
     .catch(err => res.status(400).json('Error: ' + err));
@@ -38,7 +38,7 @@ router.delete('/:id', (req, res)=>{
 router.post('update/:id', (req, res)=>{
     Exercise.findById(req.params.id)
     .then(exercise => {
-        exercise.userid = req.body.userid;
+        exercise.userId = req.body.userId;
         exercise.body.description;
         exercise.body.duration = Number(req.body.duration);
         exercise.body.date = Date.parse(req.body.date);
